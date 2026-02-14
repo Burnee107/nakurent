@@ -1,0 +1,5 @@
+document.getElementById("inquiryForm")?.addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("successMessage").innerText =
+        "Thank you! We will contact you shortly.";
+});
