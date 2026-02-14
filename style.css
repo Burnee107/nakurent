@@ -1,61 +1,105 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* BODY */
+/* =========================
+   BODY & GLOBAL
+========================= */
+html, body {
+    height: 100%;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header {
-    background: #222;
+    background: linear-gradient(135deg, #0077cc, #6a0dad);
     color: white;
     padding: 20px;
     text-align: center;
 }
 
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* NAVIGATION */
 nav {
     margin-top: 10px;
 }
 
 nav a {
     color: white;
-    margin: 0 15px;
     text-decoration: none;
-    display: inline-block;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
-/* HERO SECTION */
+nav a:hover {
+    color: #e0e0ff;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
 .hero {
     text-align: center;
     padding: 80px 20px;
-    background: #0077cc;
-    color: white;
+    background: #f0f6ff;
 }
 
-/* BUTTON */
+.hero h2 {
+    color: #6a0dad;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 20px;
+}
+
+/* =========================
+   BUTTON
+========================= */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background: #28a745;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #0077cc, #6a0dad);
     color: white;
     text-decoration: none;
-    margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 30px;
+    transition: 0.4s ease;
+    font-weight: 500;
 }
 
-/* PROPERTY CONTAINER */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
+}
+
+/* =========================
+   PROPERTY SECTION
+========================= */
 .property-container {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 40px 20px;
+    gap: 25px;
+    padding: 50px 20px;
     max-width: 1200px;
     margin: auto;
 }
@@ -63,23 +107,49 @@ nav a {
 /* PROPERTY CARD */
 .property-card {
     background: white;
-    padding: 20px;
-    flex: 1 1 250px;   /* Flexible width */
+    flex: 1 1 260px;
     max-width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
 }
 
+/* Hover Animation */
+.property-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
 .property-card img {
     width: 100%;
-    height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
 }
 
-/* FORM SECTION */
+.property-card:hover img {
+    transform: scale(1.07);
+}
+
+.property-card h3 {
+    color: #0077cc;
+    margin-bottom: 10px;
+}
+
+.property-card p {
+    margin-bottom: 8px;
+}
+
+/* =========================
+   FORM SECTION
+========================= */
 .form-section {
-    padding: 40px 20px;
+    flex: 1;
+    padding: 50px 20px;
     text-align: center;
 }
 
@@ -91,43 +161,56 @@ form {
 form input,
 form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
-/* FOOTER */
+form input:focus,
+form textarea:focus {
+    border-color: #6a0dad;
+    outline: none;
+    box-shadow: 0 0 8px rgba(106, 13, 173, 0.2);
+}
+
+/* =========================
+   FOOTER
+========================= */
 footer {
-    background: #222;
+    background: linear-gradient(135deg, #6a0dad, #0077cc);
     color: white;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    padding: 25px 20px;
+    margin-top: auto;
 }
 
-/* ========================= */
-/* RESPONSIVE MEDIA QUERIES  */
-/* ========================= */
+footer p {
+    margin-bottom: 10px;
+}
 
-/* Tablets (iPad) */
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Tablets */
 @media (max-width: 992px) {
     .property-container {
-        padding: 30px 15px;
-    }
-
-    .hero {
-        padding: 60px 15px;
+        padding: 40px 15px;
     }
 }
 
-/* Large Phones */
+/* Phones */
 @media (max-width: 768px) {
+
     nav a {
         display: block;
         margin: 10px 0;
     }
 
     .hero {
-        padding: 50px 15px;
+        padding: 60px 15px;
     }
 
     .property-card {
@@ -137,6 +220,7 @@ footer {
 
 /* Small Phones */
 @media (max-width: 480px) {
+
     header {
         padding: 15px;
     }
@@ -147,5 +231,6 @@ footer {
 
     .btn {
         width: 100%;
+        text-align: center;
     }
 }
