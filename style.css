@@ -12,14 +12,30 @@
 ========================= */
 html, body {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #ffffff;
-    color: #333;
+    background: #f9fbff;
+    color: #2c2c2c;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
+}
+
+section {
+    padding: 80px 20px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
 }
 
 /* =========================
@@ -28,120 +44,244 @@ body {
 header {
     background: linear-gradient(135deg, #0077cc, #6a0dad);
     color: white;
-    padding: 20px;
-    text-align: center;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    margin-bottom: 10px;
-}
-
-/* NAVIGATION */
-nav {
-    margin-top: 10px;
+    font-size: 22px;
+    letter-spacing: 1px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
+    margin-left: 25px;
     font-weight: 500;
+    position: relative;
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: #e0e0ff;
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: white;
+    transition: 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
 }
 
 /* =========================
    HERO SECTION
 ========================= */
 .hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4') center/cover;
+    color: white;
     text-align: center;
-    padding: 80px 20px;
-    background: #f0f6ff;
+    padding: 120px 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: auto;
 }
 
 .hero h2 {
-    color: #6a0dad;
-    margin-bottom: 15px;
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn,
+.btn-primary {
+    display: inline-block;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #0077cc, #6a0dad);
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(106, 13, 173, 0.3);
+}
+
+.btn:hover,
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 40px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #6a0dad;
+}
+
+/* =========================
+   FEATURES SECTION
+========================= */
+.features-container {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   PROPERTY TYPES
+========================= */
+.property-types ul {
+    list-style: none;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.property-types li {
+    margin: 12px 0;
+    font-size: 17px;
+}
+
+.property-types .btn {
+    display: block;
+    width: fit-content;
+    margin: 25px auto 0;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+.about p {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+.testimonials {
+    background: #f1f4ff;
+}
+
+.testimonial {
+    max-width: 700px;
+    margin: 20px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.testimonial:hover {
+    transform: scale(1.03);
+}
+
+/* =========================
+   CTA SECTION
+========================= */
+.cta {
+    background: linear-gradient(135deg, #6a0dad, #0077cc);
+    color: white;
+    text-align: center;
+}
+
+.cta p {
     margin-bottom: 20px;
 }
 
 /* =========================
-   BUTTON
-========================= */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background: linear-gradient(135deg, #0077cc, #6a0dad);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: 0.4s ease;
-    font-weight: 500;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
-}
-
-/* =========================
-   PROPERTY SECTION
+   PROPERTY CARD (Other Pages)
 ========================= */
 .property-container {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    padding: 50px 20px;
+    gap: 30px;
+    padding: 60px 20px;
     max-width: 1200px;
     margin: auto;
 }
 
-/* PROPERTY CARD */
 .property-card {
     background: white;
     flex: 1 1 260px;
     max-width: 300px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     text-align: center;
     transition: all 0.4s ease;
     cursor: pointer;
 }
 
-/* Hover Animation */
 .property-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.15);
 }
 
-/* IMAGE */
 .property-card img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 15px;
     transition: transform 0.4s ease;
 }
 
 .property-card:hover img {
-    transform: scale(1.07);
-}
-
-.property-card h3 {
-    color: #0077cc;
-    margin-bottom: 10px;
-}
-
-.property-card p {
-    margin-bottom: 8px;
+    transform: scale(1.08);
 }
 
 /* =========================
@@ -149,22 +289,26 @@ nav a:hover {
 ========================= */
 .form-section {
     flex: 1;
-    padding: 50px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
 form {
     max-width: 600px;
     margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 form input,
 form textarea {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 14px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     transition: 0.3s;
 }
 
@@ -172,65 +316,65 @@ form input:focus,
 form textarea:focus {
     border-color: #6a0dad;
     outline: none;
-    box-shadow: 0 0 8px rgba(106, 13, 173, 0.2);
+    box-shadow: 0 0 10px rgba(106, 13, 173, 0.2);
 }
 
 /* =========================
    FOOTER
 ========================= */
 footer {
-    background: linear-gradient(135deg, #6a0dad, #0077cc);
+    background: #111;
     color: white;
     text-align: center;
-    padding: 25px 20px;
+    padding: 40px 20px;
     margin-top: auto;
 }
 
 footer p {
     margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+footer .btn {
+    margin-top: 15px;
 }
 
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
-
-/* Tablets */
-@media (max-width: 992px) {
-    .property-container {
-        padding: 40px 15px;
-    }
-}
-
-/* Phones */
 @media (max-width: 768px) {
 
+    .header-container {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 15px;
+    }
+
     nav a {
-        display: block;
-        margin: 10px 0;
+        margin: 0 10px;
     }
 
-    .hero {
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    section {
         padding: 60px 15px;
-    }
-
-    .property-card {
-        max-width: 100%;
     }
 }
 
-/* Small Phones */
 @media (max-width: 480px) {
 
-    header {
-        padding: 15px;
-    }
-
     .hero {
-        padding: 40px 10px;
+        padding: 80px 15px;
     }
 
-    .btn {
+    .btn,
+    .btn-primary,
+    .btn-secondary {
         width: 100%;
-        text-align: center;
+        margin: 10px 0;
     }
 }
