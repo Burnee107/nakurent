@@ -64,17 +64,18 @@ nav a.active::after {
 }
 
 /* =========================
-   INTRO SECTION
+   HERO SECTION
 ========================= */
 .intro {
-    background: linear-gradient(135deg, #f0f6ff, #ffffff);
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4') center/cover no-repeat;
+    color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
 }
 
 .intro h2 {
-    font-size: 36px;
-    color: #6a0dad;
+    font-size: 42px;
     margin-bottom: 20px;
 }
 
@@ -82,7 +83,7 @@ nav a.active::after {
     max-width: 750px;
     margin: auto;
     font-size: 18px;
-    color: #444;
+    opacity: 0.95;
 }
 
 /* =========================
@@ -105,9 +106,10 @@ nav a.active::after {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    transition: 0.4s ease;
+    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
+    animation: fadeUp 0.8s ease forwards;
 }
 
 .property-card:hover {
@@ -120,6 +122,11 @@ nav a.active::after {
     width: 100%;
     height: 230px;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.property-card:hover img {
+    transform: scale(1.08);
 }
 
 /* DETAILS */
@@ -133,7 +140,7 @@ nav a.active::after {
 /* TITLE */
 .property-details h3 {
     font-size: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 /* PROPERTY ID */
@@ -151,7 +158,7 @@ nav a.active::after {
     margin-bottom: 10px;
 }
 
-/* STATUS BADGE */
+/* STATUS */
 .property-details p:nth-child(4) {
     display: inline-block;
     padding: 6px 14px;
@@ -169,7 +176,7 @@ nav a.active::after {
     margin-bottom: 10px;
 }
 
-/* FEATURES */
+/* FEATURE TAGS */
 .property-details ul {
     list-style: none;
     padding: 0;
@@ -184,6 +191,11 @@ nav a.active::after {
     padding: 6px 10px;
     border-radius: 12px;
     font-size: 13px;
+    transition: 0.3s;
+}
+
+.property-details ul li:hover {
+    background: #e0e6ff;
 }
 
 /* BUTTON */
@@ -311,6 +323,20 @@ footer .btn {
 }
 
 /* =========================
+   CARD ANIMATION
+========================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
@@ -327,11 +353,11 @@ footer .btn {
         margin: 0 10px;
     }
 
-    .intro {
-        padding: 70px 20px;
-    }
-
     .intro h2 {
         font-size: 28px;
+    }
+
+    .property-container {
+        margin: 50px auto;
     }
 }
