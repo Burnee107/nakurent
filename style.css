@@ -1,17 +1,18 @@
 /* =========================
    RESET
 ========================= */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 /* =========================
-   BODY & GLOBAL
+   GLOBAL
 ========================= */
-html, body {
-    height: 100%;
+html {
     scroll-behavior: smooth;
 }
 
@@ -19,13 +20,16 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #f9fbff;
     color: #2c2c2c;
+    line-height: 1.6;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 section {
     padding: 80px 20px;
+    width: 100%;
 }
 
 h2 {
@@ -44,7 +48,7 @@ p {
 header {
     background: linear-gradient(135deg, #0077cc, #6a0dad);
     color: white;
-    padding: 20px 40px;
+    padding: 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -57,11 +61,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 header h1 {
     font-size: 22px;
     letter-spacing: 1px;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -70,7 +81,7 @@ nav a {
     margin-left: 25px;
     font-weight: 500;
     position: relative;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 nav a::after {
@@ -81,7 +92,7 @@ nav a::after {
     bottom: -5px;
     left: 0;
     background: white;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 nav a:hover::after,
@@ -94,7 +105,7 @@ nav a.active::after {
 ========================= */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4') center/cover;
+                url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4') center/cover no-repeat;
     color: white;
     text-align: center;
     padding: 120px 20px;
@@ -145,7 +156,7 @@ nav a.active::after {
     color: white;
     text-decoration: none;
     margin-left: 15px;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .btn-secondary:hover {
@@ -154,7 +165,7 @@ nav a.active::after {
 }
 
 /* =========================
-   FEATURES SECTION
+   FEATURES
 ========================= */
 .features-container {
     max-width: 1100px;
@@ -170,7 +181,7 @@ nav a.active::after {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .feature:hover {
@@ -179,71 +190,7 @@ nav a.active::after {
 }
 
 /* =========================
-   PROPERTY TYPES
-========================= */
-.property-types ul {
-    list-style: none;
-    max-width: 500px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-.property-types li {
-    margin: 12px 0;
-    font-size: 17px;
-}
-
-.property-types .btn {
-    display: block;
-    width: fit-content;
-    margin: 25px auto 0;
-}
-
-/* =========================
-   ABOUT SECTION
-========================= */
-.about p {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-}
-
-/* =========================
-   TESTIMONIALS
-========================= */
-.testimonials {
-    background: #f1f4ff;
-}
-
-.testimonial {
-    max-width: 700px;
-    margin: 20px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
-}
-
-.testimonial:hover {
-    transform: scale(1.03);
-}
-
-/* =========================
-   CTA SECTION
-========================= */
-.cta {
-    background: linear-gradient(135deg, #6a0dad, #0077cc);
-    color: white;
-    text-align: center;
-}
-
-.cta p {
-    margin-bottom: 20px;
-}
-
-/* =========================
-   PROPERTY CARD (Other Pages)
+   PROPERTY CARDS
 ========================= */
 .property-container {
     flex: 1;
@@ -266,6 +213,7 @@ nav a.active::after {
     text-align: center;
     transition: all 0.4s ease;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .property-card:hover {
@@ -278,6 +226,7 @@ nav a.active::after {
     border-radius: 15px;
     margin-bottom: 15px;
     transition: transform 0.4s ease;
+    display: block;
 }
 
 .property-card:hover img {
@@ -285,7 +234,7 @@ nav a.active::after {
 }
 
 /* =========================
-   FORM SECTION
+   FORM
 ========================= */
 .form-section {
     flex: 1;
@@ -309,7 +258,13 @@ form textarea {
     margin: 12px 0;
     border: 1px solid #ddd;
     border-radius: 10px;
-    transition: 0.3s;
+    transition: 0.3s ease;
+    font-family: inherit;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
 form input:focus,
@@ -335,25 +290,23 @@ footer p {
     opacity: 0.8;
 }
 
-footer .btn {
-    margin-top: 15px;
-}
-
 /* =========================
-   RESPONSIVE DESIGN
+   RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
 
     .header-container {
         flex-direction: column;
+        text-align: center;
     }
 
     nav {
+        justify-content: center;
         margin-top: 15px;
     }
 
     nav a {
-        margin: 0 10px;
+        margin: 10px;
     }
 
     .hero h2 {
@@ -376,5 +329,6 @@ footer .btn {
     .btn-secondary {
         width: 100%;
         margin: 10px 0;
+        text-align: center;
     }
 }
